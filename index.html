@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Portfolio</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section id="about">
+    <h1>Hello, I'm Rumi Gri</h1>
+    <p>Aspiring Web Developer with a passion for clean design and coding.</p>
+  </section>
+  <section id="skills">
+    <h2>Skills</h2>
+    <div class="skill">
+      <label>HTML</label>
+      <div class="bar"><div class="progress"style="width: 90%;"></div></div>
+    </div>
+    <div class="skill">
+      <label>CSS</label>
+      <div class="bar"><div class="progress" style="width: 60%;"></div></div>
+    </div>
+    <div class="skill">
+      <label>JavaScript</label>
+      <div class="bar"><div class="progress" style="width: 70%;"></div></div>
+    </div>
+    <div class="skill">
+      <label>C++</label>
+      <div class="bar"><div class="progress" style="width:50%;"></div></div>
+    </div>
+    <div class="skill">
+      <label>Python</label>
+      <div class="bar"><div class="progress" style="width: 60%;"></div></div>
+    </div>
+  </section>
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="gallery">
+      <div class="project-card"><a href="Registration Form.html">project1</a></div>
+      <div class="project-card"><a href="photography.html">Project 2</a></div>
+      
+    </div>
+  </section>
+
+  <!-- Contact Form Section -->
+  <section id="contact">
+    <h2>Contact Me</h2>
+    <form id="contactForm">
+      <input type="text" id="name" placeholder="Your Name" required />
+      <input type="email" id="email" placeholder="Your Email" required />
+      <textarea id="message" placeholder="Your Message" required></textarea>
+      <button type="submit">Send</button>
+    </form>
+    <p id="formMsg"></p>
+  </section>
+
+  <script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener("click", function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute("href")).scrollIntoView({
+          behavior: "smooth"
+        });
+      });
+    });
+
+    // Form validation
+    document.getElementById("contactForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const message = document.getElementById("message").value.trim();
+      const msg = document.getElementById("formMsg");
+
+      if (name === "" || email === "" || message === "") {
+        msg.style.color = "red";
+        msg.textContent = "All fields are required!";
+      } else if (!email.includes("@")) {
+        msg.style.color = "red";
+        msg.textContent = "Invalid email address!";
+      } else {
+        msg.style.color = "green";
+        msg.textContent = "Message sent successfully!";
+        this.reset();
+      }
+    });
+  </script>
+
+</body>
+</html>
